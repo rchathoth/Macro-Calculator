@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  padding: 25px;
+  background-color: #FAFAFA;
+  color: #121212;
+  font-family: Helvetica Neue, sans-serif;
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+} 
+}
+
+.input-card{
+  background-color: #F0F0F0;
+  padding: 20px;
+  margin-left:-5px;
+  width: 275px;
+  border-radius: 25px;
+}
+
+.result-card{
+  background-color: #F0F0F0;
+  padding: 20px;
+  margin-left:-5px;
+  width: 275px;
+  border-radius: 25px;
+}
+
+.protein{
+  color: #d8153c;
+}
+.carbs{
+  color: #0e6cc9;
+}
+.fats{
+  color: #c97e07;
+}
+
+button{
+  background-color: #121212;
+  color: #FAFAFA;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover{
+  background-color: #555555;
+}
+
+footer{
+  margin-top: 20px;
+  font-size: 12px;
+  color: #888888;
+}
