@@ -8,7 +8,7 @@ button.addEventListener("click", function () {
     // Example calculations (customize as needed)
     const protein = Math.round(weight * 0.8); // grams
     const fats = Math.round(weight * 0.4); // grams
-    const carbs = Math.round((maintenance - ((fats * 8) + (protein * 4))) / 4);
+    const carbs = Math.round((maintenance - ((fats * 9) + (protein * 4))) / 4);
 
 
     // Update result labels
