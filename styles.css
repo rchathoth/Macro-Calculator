@@ -1,62 +1,334 @@
+/* 
+   ======================================================================
+   Vercel-inspired Minimalist Glass & Grid Design System
+   ======================================================================
+*/
+
+/* Reset & Scroll behavior */
+html {
+    background-color: #000000 !important;
+    scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
-  padding: 25px;
-  background-color: #FAFAFA;
-  color: #121212;
-  font-family: Helvetica Neue, sans-serif;
+    position: relative !important;
+    background-color: #000000 !important;
+    color: #ededed !important;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle, Elegant Background Grid with Radial Fade */
+body::before {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) !important;
+    background-size: 32px 32px !important;
+    background-position: center top !important;
+    mask-image: radial-gradient(circle at 50% 35%, black 10%, transparent 75%) !important;
+    -webkit-mask-image: radial-gradient(circle at 50% 35%, black 10%, transparent 75%) !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+}
+
+/* Hide default ambient colored background blobs */
+.fixed.inset-0.-z-10 {
+    display: none !important;
+}
+
+/* 
+   Squircles & Glass: Main Container Card 
+   Uses a large squircle-like radius (24px) combined with micro-glass properties
+*/
+.glass {
+    background: rgba(10, 10, 10, 0.7) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 24px !important;
+    /* Smooth organic squircle corner */
+    box-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    padding: 2.5rem !important;
+}
+
+/* 
+   Squircles & Glass: Secondary Badge
+*/
+.glass-light {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #888888 !important;
+    border-radius: 9999px !important;
+    /* Badge remains pill shaped */
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    padding: 0.35rem 0.85rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.375rem !important;
+    transition: background 0.2s, border-color 0.2s, color 0.2s !important;
+}
+
+.glass-light:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+.glass-light svg {
+    color: #888888 !important;
+    stroke: currentColor !important;
+    transition: color 0.2s !important;
+}
+
+.glass-light:hover svg {
+    color: #ffffff !important;
+}
+
+/* Header Text */
+.gradient-text {
+    background: linear-gradient(180deg, #ffffff 15%, #a1a1a1 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.06em !important;
+}
+
+header p {
+    color: #888888 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* Inputs & Labels */
 label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 18px;
-} 
+    color: #a1a1a1 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 0.5rem !important;
 }
 
-.input-card{
-  background-color: #F0F0F0;
-  padding: 20px;
-  margin-left:-5px;
-  width: 275px;
-  border-radius: 25px;
+/* Input Squircle & Subtle Glass styling */
+input[type="number"] {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    /* Nested squircle radius */
+    color: #ffffff !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
 }
 
-.result-card{
-  background-color: #F0F0F0;
-  padding: 20px;
-  margin-left:-5px;
-  width: 275px;
-  border-radius: 25px;
+input[type="number"]::placeholder {
+    color: #444444 !important;
 }
 
-.protein{
-  color: #d8153c;
-}
-.carbs{
-  color: #0e6cc9;
-}
-.fats{
-  color: #c97e07;
+input[type="number"]:hover {
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
-button{
-  background-color: #121212;
-  color: #FAFAFA;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: 10px;
-  border-radius: 25px;
-  cursor: pointer;
-  width: 100%;
+input[type="number"]:focus,
+.input-glow:focus {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    background-color: #000000 !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.4),
+        0 0 12px rgba(255, 255, 255, 0.08) !important;
+    outline: none !important;
 }
 
-button:hover{
-  background-color: #555555;
+.relative span {
+    color: #555555 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
 }
 
-footer{
-  margin-top: 20px;
-  font-size: 12px;
-  color: #888888;
+/* Main Calculate Button - Concentric Squircle */
+#calculate {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-weight: 500 !important;
+    border-radius: 12px !important;
+    /* Matching nested squircle radius */
+    border: 1px solid #ffffff !important;
+    padding: 0.75rem 1rem !important;
+    cursor: pointer !important;
+    transform: none !important;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05) !important;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+#calculate:hover {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+#calculate:active {
+    background: #111111 !important;
+}
+
+/* Secondary Link */
+main a {
+    color: #888888 !important;
+    font-size: 0.8125rem !important;
+    font-weight: 400 !important;
+    transition: color 0.15s ease !important;
+}
+
+main a:hover {
+    color: #ffffff !important;
+}
+
+main a svg {
+    color: #888888 !important;
+    stroke: currentColor !important;
+    transition: transform 0.15s ease !important;
+}
+
+main a:hover svg {
+    color: #ffffff !important;
+    transform: translate(2px, -2px) !important;
+}
+
+/* Results Header */
+#results h2 {
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 1.5rem !important;
+}
+
+#results h2 svg {
+    color: #ffffff !important;
+    stroke: currentColor !important;
+}
+
+/* Results Grid & Cards with Glass + Squircles */
+#results .grid {
+    gap: 0.75rem !important;
+}
+
+#results .grid>div {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    /* Intermediate squircle radius */
+    padding: 1.25rem !important;
+    transform: none !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+#results .grid>div:hover {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+#results .grid>div>div:first-child {
+    color: #888888 !important;
+    font-size: 0.6875rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.25rem !important;
+}
+
+#results .grid>div>.protein,
+#results .grid>div>.carbs,
+#results .grid>div>.fats {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+    letter-spacing: -0.04em !important;
+}
+
+/* References Footer Card with Glass + Squircles */
+footer .glass-light {
+    background: rgba(255, 255, 255, 0.01) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    border-radius: 16px !important;
+    /* Intermediate squircle radius */
+    padding: 1.5rem 2rem !important;
+    text-transform: none !important;
+    font-size: inherit !important;
+    letter-spacing: normal !important;
+    display: block !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.01) !important;
+}
+
+footer h3 {
+    color: #ffffff !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 1rem !important;
+}
+
+footer h3 svg {
+    color: #ffffff !important;
+    stroke: currentColor !important;
+}
+
+footer h4 {
+    color: #888888 !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.5rem !important;
+}
+
+footer ul {
+    margin-bottom: 1rem !important;
+}
+
+footer ul li {
+    margin-bottom: 0.25rem !important;
+}
+
+footer ul li a {
+    color: #444444 !important;
+    font-size: 0.75rem !important;
+    transition: color 0.15s ease !important;
+    text-decoration: none !important;
+}
+
+footer ul li a:hover {
+    color: #888888 !important;
+}
+
+footer p.text-center {
+    color: #333333 !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
 }
